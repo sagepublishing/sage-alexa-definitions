@@ -11,12 +11,21 @@ terms     = {}
 synonyms  = {}
 hierarchy = {}
 
+# Function for maintaining invariant that synonyms are not duplicated
+def record_synonym(synonym, term_id):
+	if synonym in synonyms:
+		if synonyms[synonym] != term_id:
+			raise Exception('Existing synonym {} with ID {} cannot be mapped to more than one term - check for duplicates'.format(synonym, term_id))
+
+	synonyms[synonym] = term_id	
 
 def main(skos_xml_file, alexa_def_file):
 
 	#########################
 	# Read skos definitions #
 	#########################
+
+	print("Reading SKOS file")
 
 	# Set up XML parsing
 	ns = {'rdf' : 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
@@ -65,11 +74,11 @@ def main(skos_xml_file, alexa_def_file):
 				hierarchy[broader_term_id] = hierarchy_set
 
 			# Obtain all possible alternative labels i.e. synonyms
-			synonyms[pref_label] = term_id
+			record_synonym(pref_label, term_id)
 
 			for alt_label_el in sage_term_el.findall('skos:altLabel',ns):
 				synonym = alt_label_el.text.lower()
-				synonyms[synonym] = term_id
+				record_synonym(synonym, term_id)
 				alexa_slot_value['name']['synonyms'].append(synonym)
 
 			# Record the alexa skill slot data, for later writing
@@ -120,8 +129,12 @@ def main(skos_xml_file, alexa_def_file):
 	# Read and update alexa skill definition #
 	##########################################
 
+	print("Loading Alexa skill definition '{}'".format(alexa_def_file))
+
 	with open(alexa_def_file) as cfg_in:
 		config = json.load(cfg_in)
+
+	print("Updating Alexa skill slot values ({} terms)".format(len(alexa_term_values)))
 
 	alexa_types = [ {
 		'name'   : "TERM_NAME",
@@ -132,6 +145,8 @@ def main(skos_xml_file, alexa_def_file):
 
 	filename_pref, filename_ext = os.path.splitext(alexa_def_file)
 	upd_skill_filename = "{}_updated{}".format(filename_pref, filename_ext)
+
+	print("Writing Alexa skill definition '{}'".format(upd_skill_filename))
 
 	with open(upd_skill_filename, "w") as cfg_out:
 		cfg_out.write(
