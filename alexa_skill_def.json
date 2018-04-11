@@ -1,0 +1,55 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "sage",
+            "intents": [
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "SageDefineIntent",
+                    "slots": [
+                        {
+                            "name": "Term",
+                            "type": "TERM_NAME"
+                        }
+                    ],
+                    "samples": [
+                        "what does {Term} mean",
+                        "what {Term} means",
+                        "what is {Term}",
+                        "what are {Term}",
+                        "define {Term}",
+                        "to define {Term}",
+                        "what {Term} is",
+                        "what {Term} are"
+                    ]
+                },
+                {
+                    "name": "SageDecomposeIntent",
+                    "slots": [
+                        {
+                            "name": "Term",
+                            "type": "TERM_NAME"
+                        }
+                    ],
+                    "samples": [
+                        "to decompose {Term}",
+                        "to clarify {Term}",
+                        "to break down {Term}",
+                        "clarify {Term}",
+                        "decompose {Term}",
+                        "break down {Term}"
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "TERM_NAME",
+                    "values": []
+                }
+            ]
+        }
+    }
+}

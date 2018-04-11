@@ -5,13 +5,18 @@ import sys
 import xml.etree.ElementTree as ET
 import boto3
 import simplejson as json
+import os
 
 terms     = {}
 synonyms  = {}
 hierarchy = {}
 
 
-def main(skos_xml_file):
+def main(skos_xml_file, alexa_def_file):
+
+	#########################
+	# Read skos definitions #
+	#########################
 
 	# Set up XML parsing
 	ns = {'rdf' : 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
@@ -20,7 +25,7 @@ def main(skos_xml_file):
 	tree = ET.parse(skos_xml_file)
 	root = tree.getroot()
 
-	alexa_skill_data = []
+	alexa_term_values = []
 
 	# Process the XML
 	for sage_term_el in root.findall('rdf:Description',ns):
@@ -68,8 +73,13 @@ def main(skos_xml_file):
 				alexa_slot_value['name']['synonyms'].append(synonym)
 
 			# Record the alexa skill slot data, for later writing
-			alexa_skill_data.append(alexa_slot_value)
+			alexa_term_values.append(alexa_slot_value)
 
+
+
+	#################################
+	# Write definitions to DynamoDB #
+	#################################
 
 	# Set up database access
 	dynamodb = boto3.resource('dynamodb')
@@ -88,30 +98,47 @@ def main(skos_xml_file):
 		if term_id in hierarchy:
 			term['NarrowerTerms'] = hierarchy.get(term_id)
 
-		### Comment me in to actually write to dynamo
-		# term_batch.put_item(
-		# 	Item=term
-		# )			
+		### Comment me out to skip the dynamo write
+		term_batch.put_item(
+			Item=term
+		)			
 
 	# Write all the synonyms
 	for syn in synonyms:
 		print("Writing synonym {}".format(syn))
-		### Comment me in to actually write to dynamo
-		# syn_batch.put_item(
-		# 	Item={
-		# 	'Synonym': syn,
-		# 	'TermID': synonyms[syn]
-		# 	}
-		# )
-
-	# Write the alexa skill slot data values to disk
-	with open("alexa_slot_values.json", "w") as json_file:
-		json_file.write(json.dumps(alexa_skill_data, sort_keys=True, indent=4 * ' '))
+		### Comment me out to skip the dynamo write
+		syn_batch.put_item(
+			Item={
+			'Synonym': syn,
+			'TermID': synonyms[syn]
+			}
+		)
 
 
+
+	##########################################
+	# Read and update alexa skill definition #
+	##########################################
+
+	with open(alexa_def_file) as cfg_in:
+		config = json.load(cfg_in)
+
+	alexa_types = [ {
+		'name'   : "TERM_NAME",
+		'values' : alexa_term_values
+	} ]
+
+	config['interactionModel']['languageModel']['types'] = alexa_types
+
+	filename_pref, filename_ext = os.path.splitext(alexa_def_file)
+	upd_skill_filename = "{}_updated{}".format(filename_pref, filename_ext)
+
+	with open(upd_skill_filename, "w") as cfg_out:
+		cfg_out.write(
+			json.dumps(config, sort_keys=True, indent=4 * ' '))
 
 
 if __name__ == "__main__":
-	main(sys.argv[1])
+	main(sys.argv[1], sys.argv[2])
 
 
