@@ -11,6 +11,9 @@ terms     = {}
 synonyms  = {}
 hierarchy = {}
 
+# Comment me in to enable boto3 logging
+# boto3.set_stream_logger('botocore')
+
 # Function for maintaining invariant that synonyms are not duplicated
 def record_synonym(synonym, term_id):
 	if synonym in synonyms:
@@ -19,7 +22,21 @@ def record_synonym(synonym, term_id):
 
 	synonyms[synonym] = term_id	
 
+
+def print_table_info(table):
+
+	print("Updating sage table:")
+	print("   Name:          {}".format(table.table_name))
+	print("   ARN:           {}".format(table.table_arn))
+	print("   ID:            {}".format(table.table_id))
+	print("   Creation date: {}".format(table.creation_date_time))
+	print("   Status:        {}".format(table.table_status))
+	print("   Item count:    {}".format(table.item_count))
+	print("   Size (bytes):  {}".format(table.table_size_bytes))
+
+
 def main(skos_xml_file, alexa_def_file):
+
 
 	#########################
 	# Read skos definitions #
@@ -96,11 +113,11 @@ def main(skos_xml_file, alexa_def_file):
 	sage_terms    = dynamodb.Table('SageTerms')
 	sage_synonyms = dynamodb.Table('SageSynonyms')
 
-	term_batch = sage_terms.batch_writer()
-	syn_batch  = sage_synonyms.batch_writer()
+	print_table_info(sage_terms)
 
 	# Write all the terms
 	for term_id in terms:
+
 		print("Writing term {}".format(term_id))
 
 		term = terms[term_id]
@@ -108,15 +125,15 @@ def main(skos_xml_file, alexa_def_file):
 			term['NarrowerTerms'] = hierarchy.get(term_id)
 
 		### Comment me out to skip the dynamo write
-		term_batch.put_item(
-			Item=term
-		)			
+		resp = sage_terms.put_item( Item=term )
+
+	print_table_info(sage_synonyms)
 
 	# Write all the synonyms
 	for syn in synonyms:
 		print("Writing synonym {}".format(syn))
 		### Comment me out to skip the dynamo write
-		syn_batch.put_item(
+		sage_synonyms.put_item(
 			Item={
 			'Synonym': syn,
 			'TermID': synonyms[syn]
