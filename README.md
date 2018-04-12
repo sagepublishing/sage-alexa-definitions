@@ -1,5 +1,12 @@
 # sage-alexa-definitions
 
+# Development
+
+## Technical Design Summary
+
+Data loading script
+AWS services
+
 ## Loading Sage Research Method definitions into DynamoDB
 
 1. Obtain AWS credentials
@@ -12,8 +19,17 @@ This clears existing definitions
 6. Upload alexa skill definition
 7. Build the skill
 
-## Adding users to the Beta
+## How to access the database 
 
+Dynamo DB data model
+
+# Deployment and Usage
+
+## How to add users to the Beta
+
+## Going live
+
+## Using the Skill
 
 ## Finding user queries in the logs
 
