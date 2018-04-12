@@ -11,11 +11,38 @@ import decimal
 
 # --------------- Initialisation code / separated from lambda invocation  -----------------
 
-dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
+dynamodb      = boto3.resource('dynamodb', region_name='us-east-1')
 synonym_table = dynamodb.Table('SageSynonyms')
 term_table    = dynamodb.Table('SageTerms')
 
-# --------------- Helpers that build all of the responses ----------------------
+# --------------- Levenstein function -------------------------
+# Implementation courtest of Wikibooks:
+# https://en.wikibooks.org/wiki/Algorithm_Implementation/Strings/Levenshtein_distance#Python
+
+def levenshtein(s1, s2):
+    if len(s1) < len(s2):
+        return levenshtein(s2, s1)
+
+    # len(s1) >= len(s2)
+    if len(s2) == 0:
+        return len(s1)
+
+    previous_row = range(len(s2) + 1)
+    for i, c1 in enumerate(s1):
+        current_row = [i + 1]
+        for j, c2 in enumerate(s2):
+            insertions = previous_row[j + 1] + 1 # j+1 instead of j since previous_row and current_row are one character longer
+            deletions = current_row[j] + 1       # than s2
+            substitutions = previous_row[j] + (c1 != c2)
+            current_row.append(min(insertions, deletions, substitutions))
+        previous_row = current_row
+    
+    return previous_row[-1]
+
+
+
+
+# --------------- Helpers that build all of the JSON responses ----------------------
 
 def build_speechlet_response(title, output, reprompt_text, should_end_session):
     return {
@@ -76,40 +103,29 @@ def query_term(term_id):
     else:
         return None
 
-def term_presentation_phrase(term, pref_term):
+
+# ----------------- Functions for formulating the spoken responses -----------------
+
+def compose_presentation_phrase(term, pref_term):
     
-    if pref_term != term:
+    lev = levenshtein(term, pref_term)
+    
+    if pref_term != term and lev > 1:
         return "{}, typically known as {}".format(term, pref_term)
     else: 
         return "{}".format(pref_term)
 
-def query_sage_definition(spoken_term, resolved_term):
-
-    term_id = query_synonym(resolved_term)
-    if term_id == None:
-        return "I'm sorry, but I couldn't match '{}' to my list of Research Method names".format(spoken_term)
-
-    term_def = query_term(term_id)
-    if term_def == None:
-        return "I'm sorry, that's a valid term but I can't a matching definition"
+def compose_sage_definition(spoken_term, resolved_term, term_id, term_def):
 
     pref_term  = term_def['PreferredTerm']
     definition = term_def['Definition']
 
-    prefix_text = term_presentation_phrase(spoken_term, pref_term)
+    prefix_text = compose_presentation_phrase(spoken_term, pref_term)
     
     # Compose the definition response
     return "{0}: {1}".format(prefix_text, definition)
 
-def query_sage_narrower_terms(spoken_term, resolved_term):
-
-    term_id = query_synonym(resolved_term)
-    if term_id == None:
-        return "I'm sorry, but I couldn't match '{}' to my list of Research Method names".format(spoken_term)
-
-    term_def = query_term(term_id)        
-    if term_def == None:
-        return "I'm sorry, that's a valid term but I can't a matching definition"
+def compose_sage_narrower_terms(spoken_term, resolved_term, term_id, term_def):
 
     narrower_terms = []
     
@@ -124,14 +140,14 @@ def query_sage_narrower_terms(spoken_term, resolved_term):
         if narrow_response['Count'] > 0:
             narrower_terms.append(narrow_response['Items'][0]['PreferredTerm'])
 
-    prefix_text = term_presentation_phrase(spoken_term, term_def['PreferredTerm'])
+    prefix_text = compose_presentation_phrase(spoken_term, term_def['PreferredTerm'])
     topics_text = ", ".join(narrower_terms)
         
     return "{0} can be broken down into the following {1} items: {2}".format(prefix_text, len(narrower_terms), topics_text)
         
 
 
-# --------------- Functions that control the skill's behavior ------------------
+# -------- Functions that parse the request and control the skill's behavior -----------
 
 def get_welcome_response():
     """ If we wanted to initialize the session to have some attributes we could
@@ -153,16 +169,13 @@ def get_welcome_response():
     return build_response(session_attributes, build_speechlet_response(
         card_title, speech_output, reprompt_text, should_end_session))
 
-def retrieve_term(intent):
+def find_resolved_term(intent):
 
     # Retrieve the resolved term, gracefully handling any issues with missing data
-    #intent['slots']['Term']['resolutions']['resolutionsPerAuthority'][0]['values'][0]['value']['name']
-    
+
     term = intent['slots'].get('Term', None)
     if term == None:
         return None 
-    
-    print(term)
     
     resolutions = term.get('resolutions', None)
     if resolutions == None:
@@ -179,7 +192,7 @@ def retrieve_term(intent):
     return res_values[0]['value']['name']
     
 
-def handle_sage_def_request(intent_name, intent, session):
+def handle_sage_request(intent_name, intent, session):
     
     session_attributes = {}
     reprompt_text = None
@@ -187,16 +200,31 @@ def handle_sage_def_request(intent_name, intent, session):
     if 'Term' in intent['slots']:
         
         spoken_term   = intent['slots']['Term']['value']
+        resolved_term = find_resolved_term(intent) 
         
-        resolved_term   = retrieve_term(intent) 
         if resolved_term != None:
+            
+            print("Alexa resolved spoken term '{}' to SRM entity '{}'".format(spoken_term, resolved_term))
+            
+            term_id = query_synonym(resolved_term)
+            if term_id == None: 
+                # This is an error, likely caused by inconsistency between the Alexa skill definition and DynamoDB
+                return "I'm sorry, but there was a problem matching '{}' to my list of Research Method names".format(spoken_term)
+        
+            term_def = query_term(term_id)
+            if term_def == None:
+                # This is an error, likely caused by inconsistency between the Alexa skill definition and DynamoDB
+                return "I'm sorry, that's a valid term but there was a problem finding a matching definition"
+            
             # Dispatch the spoken term and resolved term for data retrieval processing
             if intent_name == "SageDefineIntent":
-                speech_output = query_sage_definition(spoken_term, resolved_term)
+                speech_output = compose_sage_definition(spoken_term, resolved_term, term_id, term_def)
             elif intent_name == "SageDecomposeIntent":
-                speech_output = query_sage_narrower_terms(spoken_term, resolved_term)
+                speech_output = compose_sage_narrower_terms(spoken_term, resolved_term, term_id, term_def)
 
         else:
+            print("Alexa failed to resolve spoken term '{}'".format(spoken_term))
+            
             speech_output = "I'm sorry, I wasn't able to find a term named '{}'".format(spoken_term)
             
     else:
@@ -228,6 +256,15 @@ def on_session_started(session_started_request, session):
     print("on_session_started requestId=" + session_started_request['requestId']
           + ", sessionId=" + session['sessionId'])
 
+def on_session_ended(session_ended_request, session):
+    """ Called when the user ends the session.
+    Is not called when the skill returns should_end_session=true
+    """
+    
+    print("on_session_ended requestId=" + session_ended_request['requestId'] +
+          ", sessionId=" + session['sessionId'])
+          
+    # add any cleanup logic here
 
 def on_launch(launch_request, session):
     """ Called when the user launches the skill without specifying what they want """
@@ -253,27 +290,15 @@ def on_intent(intent_request, session):
 
     # Dispatch to your skill's intent handlers
     if intent_name == "SageDefineIntent":
-        return handle_sage_def_request("SageDefineIntent", intent, session)
+        return handle_sage_request("SageDefineIntent", intent, session)
     elif intent_name == "SageDecomposeIntent":
-        return handle_sage_def_request("SageDecomposeIntent", intent, session)
+        return handle_sage_request("SageDecomposeIntent", intent, session)
     elif intent_name == "AMAZON.HelpIntent":
         return get_welcome_response()
     elif intent_name == "AMAZON.CancelIntent" or intent_name == "AMAZON.StopIntent":
         return handle_session_end_request()
     else:
         raise ValueError("Invalid intent")
-
-
-def on_session_ended(session_ended_request, session):
-    """ Called when the user ends the session.
-
-    Is not called when the skill returns should_end_session=true
-    """
-    
-    print("on_session_ended requestId=" + session_ended_request['requestId'] +
-          ", sessionId=" + session['sessionId'])
-          
-    # add cleanup logic here
 
 
 # --------------- Main handler ------------------
@@ -305,4 +330,3 @@ def lambda_handler(event, context):
         return on_intent(event['request'], event['session'])
     elif event['request']['type'] == "SessionEndedRequest":
         return on_session_ended(event['request'], event['session'])
-
