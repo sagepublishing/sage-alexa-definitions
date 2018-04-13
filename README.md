@@ -16,7 +16,7 @@ Note that the data loading script should be run locally, while everything else i
 
 ## Accessing AWS / cloud resources
 
-**1. Obtain AWS credentials**
+**1. Obtain AWS credentials** <a name="aws_creds"></a>
 
 You will need an username and password for the following AWS account: 7445-2629-2976
 
@@ -177,7 +177,7 @@ Once Amazon says the build is complete, the new definitions should be available 
 
 DynamoDB has a self-contained, easy to use web UI for working with stored data. 
 
-![alt text](images/cloudwatch_ui.png "Example AWS CloudWatch UI")
+![Example AWS CloudWatch UI](images/cloudwatch_ui.png "Example AWS CloudWatch UI")
 
 You can use the web interface to:
 - Query terms / synonyms / definitions
@@ -191,7 +191,7 @@ You can access the web UI [here](https://console.aws.amazon.com/dynamodb/home?re
 
 The data model for the Alexa skill can be seen in the following Entity Relationship Diagram:
 
-![alt text](images/entity_diagram.png "Entity Relatioship Diagram")
+![Entity relationship diagram](images/entity_diagram.png "Entity Relatioship Diagram")
 
 The `SageSynonyms` table records all known synonyms, and their associated term IDs. It is used to go from an English-language term to the canonical identifier for the Term; in many cases, multiple synonyms map to the same canonical term.
 
@@ -294,18 +294,44 @@ Would result in:
 hypothesis: A hypothesis is a reasoned, provisional statement capable of being empirically tested. In quantitative research such statements often concern the possible relationship between two or more variables.
 ```
 
+Note that Alexa recognised the word `hypotheses`, but was only able to match it to the canonical term `hypothesis`, which is very similar. If a term named "hypotheses" existed, however, it would be matched.
+
+## Finding user queries in the logs
+
+All user queries are logged in AWS CloudWatch, which has an easy to use web interface, as you can see below.
+
+![CloudWatch web UI](images/cloudwatch.png "CloudWatch web UI")
+
+You can find the queries by following these steps.
+
+1. Log in to AWS CloudWatch (you'll need [AWS Credentials](#aws_creds) to do this)
+
+2. Go to the [sageDefineTerms log group](https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logEventViewer:group=/aws/lambda/sageDefineTerms), and click on "Search Log Group". 
+[Shortcut link]
+
+3. Type  "Alexa resolved" into the Filter Events field and hit Enter. The successfully matched terms will be displayed, along the original spoken term.
+
+4. Type "Alexa failed" into the Filter Events field and hit Enter. The spoken terms that couldn't be matched to research method terms will be displayed.
+
+e.g.
+
+```
+12:57:15 Alexa resolved spoken term 'psychological tests' to SRM entity 'psychometrics'
+13:03:42 Alexa resolved spoken term 'collective behavior' to SRM entity 'collective behavior'
+13:17:17 Alexa resolved spoken term 'skepticisms' to SRM entity 'scepticism'
+13:28:19 Alexa resolved spoken term 'hypothesis' to SRM entity 'hypothesis'
+...
+12:14:49 Alexa failed to resolve spoken term 'something'
+12:15:06 Alexa failed to resolve spoken term 'lean'
+12:16:10 Alexa failed to resolve spoken term 'hadron collider'
+```
+
+
+
 ## How to add users to the Beta
 
 ## Going live
 
 
-
-## Finding user queries in the logs
-
-1. Log in to AWS CloudWatch
-2. Access the sageDefineTerms log group, click Search Log Group. 
-[Shortcut link](https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logEventViewer:group=/aws/lambda/sageDefineTerms)
-3. Enter "Alexa resolved"
-4. Enter "Alexa failed" 
 
 
