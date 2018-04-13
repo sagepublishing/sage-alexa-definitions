@@ -181,8 +181,8 @@ DynamoDB has a self-contained, easy to use web UI for working with stored data.
 
 You can use the web interface to:
 - Query terms / synonyms / definitions
-- add, edit, or delete terms or synonyms
-- clear data wholesale, if you want a clean refresh
+- Add, edit, or delete terms or synonyms
+- Clear data wholesale, if you want a clean refresh
 
 You can access the web UI [here](https://console.aws.amazon.com/dynamodb/home?region=us-east-1#tables:selected=SageTerms).
 
@@ -195,7 +195,7 @@ The data model for the Alexa skill can be seen in the following Entity Relations
 
 The `SageSynonyms` table records all known synonyms, and their associated term IDs. It is used to go from an English-language term to the canonical identifier for the Term; in many cases, multiple synonyms map to the same canonical term.
 
-For example the canonical term both `psychometrics` and `psychological tests`, map to SRM0172.
+For example the both `psychometrics` and `psychological tests`, map to SRM0172.
 
 The `SageTerms` table records the canonical terms, including IDs, definitions, preferred name, and links to other terms. It is used to compose the bulk of the spoken responses for the skill. 
 
@@ -211,8 +211,8 @@ For example:
 
 * Alexa hears `psychological test` (singular)
 * Alexa applies fuzzy matching to match `psychological tests` (plural), which is a synonym found in the skill definition
-* Alexa knows `psychological test` is a synonym for the canonical term `psychometrics`
-* Alexa sends the lambda the original spoken term it heard, plus the resolved canonical term (we receive `psychological test / psychometrics`)
+* Alexa knows `psychological tests` is a synonym for the canonical term `psychometrics`
+* Alexa sends the lambda the original spoken term it heard, plus the resolved canonical term (so we receive `psychological test / psychometrics`)
 
 # Deployment and Usage
 
