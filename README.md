@@ -16,7 +16,7 @@ Note that the data loading script should be run locally, while everything else i
 
 ## Accessing AWS / cloud resources
 
-1. Obtain AWS credentials
+**1. Obtain AWS credentials**
 
 You will need an username and password for the following AWS account: 7445-2629-2976
 
@@ -29,7 +29,7 @@ Make sure you have all of the following, for your user:
 
 You'll need these to access the Amazon console, and to run access AWS from your local environement.
 
-2. Create an Amazon developer account (optional) 
+**2. Create an Amazon developer account (optional)**
 
 The Alexa skill needs to be owned by a single [Amazon developer account](https://developer.amazon.com/). The version recently demoed is owned by Alan Maloney, so the skill definition can only currently be modified by him. 
 
@@ -99,18 +99,79 @@ Before running the script, you will need a copy of the currently deployed Alexa 
 
 The relevant console page for the Demo Alexa app (owned by Alan Maloney) can be found [here](https://developer.amazon.com/alexa/console/ask/build/custom/amzn1.ask.skill.d92b89ac-f809-447c-8c29-556976594ff6/development/en_GB/json-editor).
 
-Select all the JSON in JSON Editor, then save this text to file on your local machine. 
+Select all the JSON in JSON Editor, then save this text to file on your local machine. I recommend storing the Alexa skill definition file and the SRM definitions file in the same location as this README, alongside the data loading script.
 
 **_Make sure you download the latest Alexa skill definition, rather than using an a version you downloaded previously!_**  
 
+**6. Run the script**
 
+Use the following command to load the SRM terms, definitions, and synonyms into DynamoDB.
 
-5. Run the script
-```./skos_def_processor.py SRMont-2018-01-01.skos alexa_skill_def.xml```
-This overwrites existing definitions, adds new. 
-Nothing is cleared
-6. Load new alexa skill definition json
-7. Build the skill
+```python3 skos_def_processor.py {SRM-definition-file} {alexa-skill-def-file}```
+
+The script displays some database status information, prints term IDs and syonyms as they are loaded, then creates and updated version of your Alexa skill definition file.
+
+```
+Reading SKOS file
+Updating sage table:
+   Name:          SageTerms
+   ARN:           arn:aws:dynamodb:us-east-1:744526292976:table/SageTerms
+   ID:            46e6cf97-ad4b-48a6-9d84-d1616ced9189
+   Creation date: 2018-04-03 17:39:20.105000+01:00
+   Status:        ACTIVE
+   Item count:    659
+   Size (bytes):  145402
+Writing term SRM0429
+Writing term SRM0048
+... (snip) ...
+Writing term SRM0628
+Writing term SRM0498
+Updating sage table:
+   Name:          SageSynonyms
+   ARN:           arn:aws:dynamodb:us-east-1:744526292976:table/SageSynonyms
+   ID:            da63d5c6-4e64-4c50-b48d-ee366bfa9da0
+   Creation date: 2018-04-03 17:38:10.872000+01:00
+   Status:        ACTIVE
+   Item count:    1110
+   Size (bytes):  41002
+Writing synonym nested models
+Writing synonym ethnomethodology
+... (snip) ...
+Writing synonym researcher development
+Writing synonym factor scales
+Loading Alexa skill definition 'alexa_skill_def.json'
+Updating Alexa skill slot values (659 terms)
+Writing Alexa skill definition 'alexa_skill_def_updated.json'
+```
+
+Note that:
+
+* For new terms and synonyms, new records will be created
+* Existing data will NOT be deleted from DynamoDB
+* The script overwrites existing records rather than performing a wholesale replacement. This means that old definitions may hang around in the Alexa skill after deletion from the master data store.
+* If you make major changes to SRM definitions, such as deleting terms or changing synonyms, consider clearing the tables manually using the AWS console.
+
+**7. Load new alexa skill definition json**
+
+The data loading script will have created a new Alexa skill definition, based on the one you provided. The only change will be to the TERM_NAME slot type, other definition data is untouched. 
+
+The term names are required in the Alexa skill definition as well as DynamoDB; Alexa uses the term names and synonyms for voice recognition.
+
+The new definition file will have `updated` in it's name, e.g.:
+
+```
+-rw-r--r--   1 jsiddle  staff    1714 11 Apr 14:54 alexa_skill_def.json
+-rw-r--r--   1 jsiddle  staff  218629 13 Apr 10:46 alexa_skill_def_updated.json
+```
+
+Load this updated JSON definition into the Amazon Developer Console, via the same page as where you downloaded the definition in the first place (look for "Drag and Drop a json file" on the JSON Editor screen).
+
+**8. Build the skill**
+
+Finally, build the model, using the "Build Model" button that you should see when looking at the JSON Editor, or otherwise working with the Interaction Model.
+
+Once Amazon says the build is complete, the new definitions should be available via the Skill. You're done!
+
 
 ## How to access the database 
 
