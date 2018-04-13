@@ -164,7 +164,7 @@ The new definition file will have `updated` in it's name, e.g.:
 -rw-r--r--   1 jsiddle  staff  218629 13 Apr 10:46 alexa_skill_def_updated.json
 ```
 
-Load this updated JSON definition into the Amazon Developer Console, via the same page as where you downloaded the definition in the first place (look for "Drag and Drop a json file" on the JSON Editor screen).
+Load this updated JSON definition into the Amazon Developer Console, using the JSON Editor page (where you downloaded the definition in the first place). Look for "Drag and Drop a json file" on the JSON Editor screen.
 
 **8. Build the skill**
 
@@ -175,8 +175,44 @@ Once Amazon says the build is complete, the new definitions should be available 
 
 ## How to access the database 
 
-URL for querying - fairly self explanitory UI
-Dynamo DB data model
+DynamoDB has a self-contained, easy to use web UI for working with stored data. 
+
+![alt text](images/cloudwatch_ui.png "Example AWS CloudWatch UI")
+
+You can use the web interface to:
+- Query terms / synonyms / definitions
+- add, edit, or delete terms or synonyms
+- clear data wholesale, if you want a clean refresh
+
+You can access the web UI [here](https://console.aws.amazon.com/dynamodb/home?region=us-east-1#tables:selected=SageTerms).
+
+
+## Data Model
+
+The data model for the Alexa skill can be seen in the following Entity Relationship Diagram:
+
+![alt text](images/entity_diagram.png "Entity Relatioship Diagram")
+
+The `SageSynonyms` table records all known synonyms, and their associated term IDs. It is used to go from an English-language term to the canonical identifier for the Term; in many cases, multiple synonyms map to the same canonical term.
+
+For example the canonical term both `psychometrics` and `psychological tests`, map to SRM0172.
+
+The `SageTerms` table records the canonical terms, including IDs, definitions, preferred name, and links to other terms. It is used to compose the bulk of the spoken responses for the skill. 
+
+# Named Entity Resolution
+
+Note that the Sage Research Methods skill uses Named Entity Recognition to identify terms in speech.
+
+This capability is built in to Alexa. The Skill definition (i.e. the uploaded JSON, see above) is used as training data for speech recognition. Specifically, the TERM_NAME slot type provides the canonical "objects" that Alexa tries to recognise in speech - it uses the provided values and all associated synonyms for matching purposes.
+
+The lambda service receives both the "spoken term" that Alexa heard, as well as the canonical term that it resolved the speech to.
+
+For example: 
+
+* Alexa hears `psychological test` (singular)
+* Alexa applies fuzzy matching to match `psychological tests` (plural), which is a synonym found in the skill definition
+* Alexa knows `psychological test` is a synonym for the canonical term `psychometrics`
+* Alexa sends the lambda the original spoken term it heard, plus the resolved canonical term (we receive `psychological test / psychometrics`)
 
 # Deployment and Usage
 
