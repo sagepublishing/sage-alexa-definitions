@@ -177,7 +177,7 @@ Once Amazon says the build is complete, the new definitions should be available 
 
 DynamoDB has a self-contained, easy to use web UI for working with stored data. 
 
-![Example AWS CloudWatch UI](images/cloudwatch_ui.png "Example AWS CloudWatch UI")
+![Example AWS DynamoDB UI](images/dynamodb_ui.png "Example AWS DynamoDB UI")
 
 You can use the web interface to:
 - Query terms / synonyms / definitions
