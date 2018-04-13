@@ -326,11 +326,30 @@ e.g.
 12:16:10 Alexa failed to resolve spoken term 'hadron collider'
 ```
 
-
-
 ## How to add users to the Beta
 
+The Skill is currently (as of 13th April) in Beta, meaning that selected individuals can be invited to participate.
+
+The Beta programme capability is provided by Amazon, and can be administered via the Amazon Developer Console. 
+
+Specifically:
+* Open the [Amazon Developer Console, Alexa 'ask' skills](https://developer.amazon.com/alexa/console/ask)
+* Click on the Sage skill (Sage Research Definitions)
+* Go to the Launch tab
+* Click Availability on the left hand side
+* The Beta Test panel (which is fairly self-explanitory) should be included in the resulting page.
+
+Note that the Beta programme is time-bound (the current Beta closes on July 3rd), but a new programme can simply be started once the current programme finishes.
+
 ## Going live
+
+The put the skill fully live, use the Submission page, which appears under the Launch tab on the Amazon Developer Console.
+
+The skill must meet certain criteria before being submitted, this includes agreeing to certain mandatory privacy and export statements, and provision of descriptive test and logos.
+
+⚠ I would recommend a full end-to-end review of all skill configuration and settings before submitting the skill. 
+
+
 
 
 
