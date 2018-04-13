@@ -101,7 +101,7 @@ The relevant console page for the Demo Alexa app (owned by Alan Maloney) can be 
 
 Select all the JSON in JSON Editor, then save this text to file on your local machine. I recommend storing the Alexa skill definition file and the SRM definitions file in the same location as this README, alongside the data loading script.
 
-⚠ ⚠ ⚠ **_Make sure you download the latest Alexa skill definition, rather than using an a version you downloaded previously!_** ⚠ ⚠ ⚠ 
+⚠ ⚠ ⚠ _Make sure you download the latest Alexa skill definition, rather than using an a version you downloaded previously!_ ⚠ ⚠ ⚠ 
 
 **6. Run the script**
 
