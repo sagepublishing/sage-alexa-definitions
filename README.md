@@ -101,7 +101,7 @@ The relevant console page for the Demo Alexa app (owned by Alan Maloney) can be 
 
 Select all the JSON in JSON Editor, then save this text to file on your local machine. 
 
-** _Make sure you download the latest Alexa skill definition, rather than using an a version you downloaded previously!_ **  
+**_Make sure you download the latest Alexa skill definition, rather than using an a version you downloaded previously!_**  
 
 
 
