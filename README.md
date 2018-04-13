@@ -216,17 +216,88 @@ For example:
 
 # Deployment and Usage
 
+## Using the Skill
+
+**1. Get definitions**
+
+You can ask for a research method to be defined by using any of the following phrases after saying "ask sage...".
+
+* what does X mean
+* what means
+* what is X
+* what are X
+* to define
+* what X is
+* what X are
+
+Where X is your research term. e.g.
+
+```
+alexa, ask sage to define psychometrics
+alexa, ask what psychological tests are
+```
+
+If the spoken phrase is resolved to a canonical SRM term, the skill will respond with a definition, e.g.
+
+```
+psychometrics: The application of mathematical principles to the measurement of psychological constructs.
+```
+
+If the term can't be resolved, you'll get an appropriate message:
+
+```
+I'm sorry, I wasn't able to find a term named 'hadron collider'
+```
+
+
+**2. Find canonical terms using synonyms**
+
+You can find SRM terms using known synonyms. If your spoken phrase is matched to a synonym, the response will reflect this:
+
+```
+psychological tests, typically known as psychometrics: The application of mathematical principles...
+```
+
+**3. Get narrower terms**
+
+You can also break down terms into narrower concepts, as defined in the Sage Research Methods ontology, using the following phrases:
+
+* to decompose X
+* to clarify X
+* to break down X
+
+If your spoken term matches a canonical term, the skill will respond with the set of narrower terms, e.g.
+
+```
+psychometrics can be broken down into the following 5 items: unfolding method, achievement tests, personality inventories, intelligence tests, aptitude tests
+```
+
+If there are no narrower terms, you'll get an appropriate response:
+
+```
+Sorry, it isn't possible to decompose 'personality inventories' any further
+```
+
+**4. Fuzzy matching of minor mistakes**
+
+Alexa can account for some minor mistakes or differences by fuzzily matching the spoken phrase it recognized with sage terms.
+
+For example:
+
+```
+alexa, ask sage to define hypotheses
+```
+
+Would result in:
+
+```
+hypothesis: A hypothesis is a reasoned, provisional statement capable of being empirically tested. In quantitative research such statements often concern the possible relationship between two or more variables.
+```
+
 ## How to add users to the Beta
 
 ## Going live
 
-## Using the Skill
-
-alexa, ask sage to define [term]
-alexa, ask sage to decompose [term]
-
-Fuzzy matching (skepticism)
-"typically known as" (psychometrics vs psychological tests)
 
 
 ## Finding user queries in the logs
