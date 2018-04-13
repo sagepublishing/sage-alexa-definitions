@@ -134,7 +134,8 @@ def compose_sage_narrower_terms(spoken_term, resolved_term, term_id, term_def):
     
     for narrower_term_id in term_def['NarrowerTerms']:
         narrow_response = term_table.query(
-            KeyConditionExpression=Key('TermID').eq(narrower_term_id)
+            KeyConditionExpression=Key('TermID').eq(narrower_term_id),
+            ProjectionExpression="PreferredTerm"
         )
         
         if narrow_response['Count'] > 0:
