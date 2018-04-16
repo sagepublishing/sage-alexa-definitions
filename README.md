@@ -199,6 +199,10 @@ For example the both `psychometrics` and `psychological tests`, map to SRM0172.
 
 The `SageTerms` table records the canonical terms, including IDs, definitions, preferred name, and links to other terms. It is used to compose the bulk of the spoken responses for the skill. 
 
+## Security
+
+The [lambda_basic_execution](https://console.aws.amazon.com/iam/home?region=us-east-1#/roles/lambda_basic_execution) IAM role was modified to allow the lambda function to read from DynamoDB. The `AmazonDynamoDBReadOnlyAccess` policy was added to the role.
+
 # Named Entity Resolution
 
 Note that the Sage Research Methods skill uses Named Entity Recognition to identify terms in speech.
@@ -278,7 +282,6 @@ If there are no related terms, you'll get an appropriate response:
 ```
 Sorry, the term 'diffuse comparisons' isn't related to any other terms
 ```
-
 
 **4. Get narrower terms**
 
