@@ -111,7 +111,7 @@ def compose_presentation_phrase(term, pref_term):
     lev = levenshtein(term, pref_term)
     
     if pref_term != term and lev > 1:
-        return "{}, typically known as {}".format(term, pref_term)
+        return "{} (typically known as {})".format(term, pref_term)
     else: 
         return "{}".format(pref_term)
 
