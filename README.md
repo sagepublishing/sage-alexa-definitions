@@ -220,15 +220,15 @@ For example:
 
 **1. Get definitions**
 
-You can ask for a research method to be defined by using any of the following phrases after saying "ask sage...".
+You can ask for a research method to be defined by using any of the following phrases (remember to start with "Alexa,..."):
 
-* what does X mean
-* what means
-* what is X
-* what are X
-* to define
-* what X is
-* what X are
+* ask sage what does X mean
+* ask sage what means
+* ask sage what is X
+* ask sage what are X
+* ask sage to define
+* ask sage what X is
+* ask sage what X are
 
 Where X is your research term. e.g.
 
@@ -258,27 +258,40 @@ You can find SRM terms using known synonyms. If your spoken phrase is matched to
 psychological tests, typically known as psychometrics: The application of mathematical principles...
 ```
 
-**3. Get narrower terms**
+**3. Get related terms**
 
-You can also break down terms into narrower concepts, as defined in the Sage Research Methods ontology, using the following phrases:
+You can also find related terms, as defined by the Sage Research Methods ontology, using the following phrases:
 
-* to decompose X
-* to clarify X
-* to break down X
+* ask sage get relationships for X
+* ask sage find terms related to X
+* ask sage what is X related to
+* ask sage what is X like
 
-If your spoken term matches a canonical term, the skill will respond with the set of narrower terms, e.g.
-
-```
-psychometrics can be broken down into the following 5 items: unfolding method, achievement tests, personality inventories, intelligence tests, aptitude tests
-```
-
-If there are no narrower terms, you'll get an appropriate response:
+If your spoken term matches a canonical term, the skill will respond with the set of related terms, e.g.
 
 ```
-Sorry, it isn't possible to decompose 'personality inventories' any further
+psychometrics is related to the following 6 items: analysis of variance, measurement, cluster analysis, factor analysis, structural equation modelling, levels of measurement
 ```
 
-**4. Fuzzy matching of minor mistakes**
+If there are no related terms, you'll get an appropriate response:
+
+```
+Sorry, the term 'diffuse comparisons' isn't related to any other terms
+```
+
+
+**4. Get narrower terms**
+
+Similarly, you can break down terms into narrower concepts using the following phrases:
+
+* ask sage to decompose X
+* ask sage to clarify X
+* ask sage to break down X
+
+The skill will return a response listing the narrower concepts, or a message indicating there are no lower level terms.
+
+
+**5. Fuzzy matching of minor mistakes**
 
 Alexa can account for some minor mistakes or differences by fuzzily matching the spoken phrase it recognized with sage terms.
 
@@ -295,6 +308,7 @@ hypothesis: A hypothesis is a reasoned, provisional statement capable of being e
 ```
 
 Note that Alexa recognised the word `hypotheses`, but was only able to match it to the canonical term `hypothesis`, which is very similar. If a term named "hypotheses" existed, however, it would be matched.
+
 
 ## Finding user queries in the logs
 

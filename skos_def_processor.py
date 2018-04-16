@@ -10,6 +10,7 @@ import os
 terms     = {}
 synonyms  = {}
 hierarchy = {}
+relations = {}
 
 # Comment me in to enable boto3 logging
 # boto3.set_stream_logger('botocore')
@@ -90,6 +91,15 @@ def main(skos_xml_file, alexa_def_file):
 				hierarchy_set.add(term_id)
 				hierarchy[broader_term_id] = hierarchy_set
 
+			# Retrieve related terms
+			for related_el in sage_term_el.findall('skos:related',ns):
+				rdf_resource_key = "{"+ns['rdf']+"}resource"
+				related_term_id = related_el.get(rdf_resource_key)
+
+				related_set = relations.get(related_term_id, set())
+				related_set.add(term_id)
+				relations[related_term_id] = related_set
+
 			# Obtain all possible alternative labels i.e. synonyms
 			record_synonym(pref_label, term_id)
 
@@ -123,6 +133,8 @@ def main(skos_xml_file, alexa_def_file):
 		term = terms[term_id]
 		if term_id in hierarchy:
 			term['NarrowerTerms'] = hierarchy.get(term_id)
+		if term_id in relations:
+			term['RelatedTerms'] = relations.get(term_id)
 
 		### Comment me out to skip the dynamo write
 		resp = sage_terms.put_item( Item=term )

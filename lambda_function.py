@@ -145,7 +145,30 @@ def compose_sage_narrower_terms(spoken_term, resolved_term, term_id, term_def):
     topics_text = ", ".join(narrower_terms)
         
     return "{0} can be broken down into the following {1} items: {2}".format(prefix_text, len(narrower_terms), topics_text)
+
+def compose_sage_related_terms(spoken_term, resolved_term, term_id, term_def):
+
+    related_terms = []
+    
+    if 'RelatedTerms' not in term_def:
+        return "Sorry, the term '{}' isn't related to any other terms".format(spoken_term)
+    
+    for related_term_id in term_def['RelatedTerms']:
+        related_response = term_table.query(
+            KeyConditionExpression=Key('TermID').eq(related_term_id),
+            ProjectionExpression="PreferredTerm"
+        )
         
+        if related_response['Count'] > 0:
+            related_terms.append(related_response['Items'][0]['PreferredTerm'])
+
+    prefix_text = compose_presentation_phrase(spoken_term, term_def['PreferredTerm'])
+    topics_text = ", ".join(related_terms)
+        
+    return "{0} is related to the following {1} items: {2}".format(prefix_text, len(related_terms), topics_text)
+
+
+
 
 
 # -------- Functions that parse the request and control the skill's behavior -----------
@@ -222,6 +245,8 @@ def handle_sage_request(intent_name, intent, session):
                 speech_output = compose_sage_definition(spoken_term, resolved_term, term_id, term_def)
             elif intent_name == "SageDecomposeIntent":
                 speech_output = compose_sage_narrower_terms(spoken_term, resolved_term, term_id, term_def)
+            elif intent_name == "SageRelatedIntent":
+                speech_output = compose_sage_related_terms(spoken_term, resolved_term, term_id, term_def)
 
         else:
             print("Alexa failed to resolve spoken term '{}'".format(spoken_term))
@@ -294,6 +319,8 @@ def on_intent(intent_request, session):
         return handle_sage_request("SageDefineIntent", intent, session)
     elif intent_name == "SageDecomposeIntent":
         return handle_sage_request("SageDecomposeIntent", intent, session)
+    elif intent_name == "SageRelatedIntent":
+        return handle_sage_request("SageRelatedIntent", intent, session)
     elif intent_name == "AMAZON.HelpIntent":
         return get_welcome_response()
     elif intent_name == "AMAZON.CancelIntent" or intent_name == "AMAZON.StopIntent":
