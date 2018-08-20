@@ -4,6 +4,10 @@
             "invocationName": "sage",
             "intents": [
                 {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
                     "name": "AMAZON.HelpIntent",
                     "samples": []
                 },
@@ -12,7 +16,11 @@
                     "slots": [
                         {
                             "name": "Term",
-                            "type": "TERM_NAME"
+                            "type": "TERM_NAME",
+                            "samples": [
+                                "define {Term}",
+                                "{Term}"
+                            ]
                         }
                     ],
                     "samples": [
@@ -31,10 +39,15 @@
                     "slots": [
                         {
                             "name": "Term",
-                            "type": "TERM_NAME"
+                            "type": "TERM_NAME",
+                            "samples": [
+                                "decompose {Term}",
+                                "{Term}"
+                            ]
                         }
                     ],
                     "samples": [
+                        "to break up {Term}",
                         "to decompose {Term}",
                         "to clarify {Term}",
                         "to break down {Term}",
@@ -42,14 +55,4357 @@
                         "decompose {Term}",
                         "break down {Term}"
                     ]
+                },
+                {
+                    "name": "SageRelatedIntent",
+                    "slots": [
+                        {
+                            "name": "Term",
+                            "type": "TERM_NAME",
+                            "samples": [
+                                "{Term}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "to get methods related to {Term}",
+                        "to get related terms for {Term}",
+                        "to get relationships for {Term}",
+                        "to get relatives of {Term}",
+                        "what is {Term} like",
+                        "get terms related to {Term}",
+                        "what is {Term} related to"
+                    ]
+                },
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
                 }
             ],
             "types": [
                 {
                     "name": "TERM_NAME",
-                    "values": []
+                    "values": [
+                        {
+                            "name": {
+                                "value": "nested models"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "ethnomethodology"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "structured observation"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "action research",
+                                "synonyms": [
+                                    "action enquiry",
+                                    "action inquiry"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "covert research"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "visual research",
+                                "synonyms": [
+                                    "visual methods",
+                                    "visual analysis"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "ethnography",
+                                "synonyms": [
+                                    "idiographic data"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "case study research"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "reliability"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "validity"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "hypothesis testing"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "lisrel"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "multivariate models",
+                                "synonyms": [
+                                    "multivariate statistics"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "latent variable models"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "confirmatory factor analysis",
+                                "synonyms": [
+                                    "omnibus fit"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "structural equation modelling",
+                                "synonyms": [
+                                    "sem",
+                                    "structural equation modeling"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "population parameters"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "psychometrics",
+                                "synonyms": [
+                                    "scalogram analysis",
+                                    "person-fit analysis",
+                                    "psychological tests"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "intelligence tests"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "significance testing",
+                                "synonyms": [
+                                    "test of significance"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "statistical significance"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "focus groups",
+                                "synonyms": [
+                                    "group interviews"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "group dynamics"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "factor analysis"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "non-participant observation",
+                                "synonyms": [
+                                    "nonparticipant observation"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "reflexivity"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "observational research",
+                                "synonyms": [
+                                    "observation research",
+                                    "observational methods",
+                                    "observational studies",
+                                    "observation methods"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "participant observation"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "autocorrelation"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "exploratory data analysis",
+                                "synonyms": [
+                                    "eda"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "residuals",
+                                "synonyms": [
+                                    "fitting error"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "populations"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "confidence intervals"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "normal distribution",
+                                "synonyms": [
+                                    "bell curve",
+                                    "normal curve",
+                                    "gaussian distribution"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "regression coefficient"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "regression analysis"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "bootstrapping",
+                                "synonyms": [
+                                    "probability-based inference"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "standard deviations"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "jackknife methods"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "standard error"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "maximum likelihood estimation",
+                                "synonyms": [
+                                    "mle",
+                                    "maximum likelihood",
+                                    "maximum-likelihood estimation"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "probability",
+                                "synonyms": [
+                                    "binomial distribution"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "multilevel analysis",
+                                "synonyms": [
+                                    "multilevel modelling"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "sampling distribution",
+                                "synonyms": [
+                                    "sample distribution"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "sampling"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "null hypothesis"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "sample size"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "independent variables"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "praxis"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "random error"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "data quality and data management",
+                                "synonyms": [
+                                    "data quality"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "measurement",
+                                "synonyms": [
+                                    "valid measures",
+                                    "single or multiple indicators"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "measurement error"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "poststructuralism"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "multiple voices",
+                                "synonyms": [
+                                    "multi-voice"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "qualitative evaluation"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "evaluation"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "intervention studies",
+                                "synonyms": [
+                                    "intervention analysis"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "unobtrusive measures",
+                                "synonyms": [
+                                    "unobtrusive methods"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "theory",
+                                "synonyms": [
+                                    "theory formation",
+                                    "theorisation",
+                                    "building theory",
+                                    "theorization",
+                                    "theory building"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "psycho-analytic theory"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "participatory action research"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "marxism"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "photo elicitation"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "oral history research",
+                                "synonyms": [
+                                    "oral history"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "narrative analysis",
+                                "synonyms": [
+                                    "joint narratives",
+                                    "narratological"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "oral history interviews"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "qualitative data analysis",
+                                "synonyms": [
+                                    "analyzing qualitative data",
+                                    "qualitative analysis"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "video research",
+                                "synonyms": [
+                                    "video interviewing",
+                                    "video recording",
+                                    "video interviews"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "life history interviews",
+                                "synonyms": [
+                                    "life story interview"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "historical research",
+                                "synonyms": [
+                                    "historical analysis",
+                                    "historical methods"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "time-series analysis"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "dependent variables"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "dummy variables"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "quasi-experimental designs",
+                                "synonyms": [
+                                    "quasiexperiment",
+                                    "quasi-experiment",
+                                    "quasiexperimental",
+                                    "quasi-experimental"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "control groups"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "experimental design"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "experimental groups",
+                                "synonyms": [
+                                    "test groups"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "autoethnography"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "multiple regression"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "types of variable"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "discriminant analysis"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "research design",
+                                "synonyms": [
+                                    "frameworks for research",
+                                    "research framework"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "exploratory research"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "missing data",
+                                "synonyms": [
+                                    "missing values"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "ordinary least squares",
+                                "synonyms": [
+                                    "ordinary least square method",
+                                    "ols"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "narrative research",
+                                "synonyms": [
+                                    "narrative enquiry",
+                                    "narrative inquiry",
+                                    "narrative methods"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "structured interviews",
+                                "synonyms": [
+                                    "standardised interview",
+                                    "researcher-administered survey",
+                                    "structured interview",
+                                    "quantitative interviewing",
+                                    "standardized interview",
+                                    "consistent wording"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "survey research",
+                                "synonyms": [
+                                    "survey data"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "life history research",
+                                "synonyms": [
+                                    "life experiences",
+                                    "life events",
+                                    "life story"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "qualitative data collection"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "qualitative interviewing",
+                                "synonyms": [
+                                    "interviewing",
+                                    "interviews"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "literature review",
+                                "synonyms": [
+                                    "lit review",
+                                    "narrative review",
+                                    "review articles",
+                                    "mapping the literature",
+                                    "literature review methodology",
+                                    "literature review methods",
+                                    "background literature"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "critique",
+                                "synonyms": [
+                                    "critical analysis",
+                                    "criticality"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "analysis of variance",
+                                "synonyms": [
+                                    "anova"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "quantitative data analysis",
+                                "synonyms": [
+                                    "statistics"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "statistical packages"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "mixed methods",
+                                "synonyms": [
+                                    "combining methods",
+                                    "mixing qualitative and quantitative"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "methodological pluralism"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "historical materialism"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "game theory"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "interdisciplinarity"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "ontology"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "postmodernism",
+                                "synonyms": [
+                                    "postmodernist",
+                                    "postmodern"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "interpretivism",
+                                "synonyms": [
+                                    "interpretive paradigms"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "naturalistic inquiry"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "log-linear analysis",
+                                "synonyms": [
+                                    "loglinear analysis",
+                                    "log-linear models",
+                                    "log linear models",
+                                    "loglinear modeling",
+                                    "loglinear models",
+                                    "log linear analysis"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "multiple analysis of variance",
+                                "synonyms": [
+                                    "manova"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "analysis of covariance",
+                                "synonyms": [
+                                    "ancova"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "path analysis"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "online interviews",
+                                "synonyms": [
+                                    "e-interviews",
+                                    "internet interviews"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "matrix algebra"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "symbolic interactionism"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "chicago school"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "coding",
+                                "synonyms": [
+                                    "post-coding"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "in-vivo coding",
+                                "synonyms": [
+                                    "in vivo coding"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "heteroscedasticity"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "multicollinearity"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "rationalism",
+                                "synonyms": [
+                                    "rationality"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "rational choice theory"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "virtual ethnography",
+                                "synonyms": [
+                                    "online ethnography"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "privacy"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "online surveys",
+                                "synonyms": [
+                                    "e-questionnaires",
+                                    "e-surveys",
+                                    "email survey",
+                                    "web surveys",
+                                    "e-mail survey",
+                                    "online questionnaires",
+                                    "web questionnaire"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "informed consent"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "internet research",
+                                "synonyms": [
+                                    "internet research methods",
+                                    "e-research",
+                                    "online research",
+                                    "online study",
+                                    "online studies"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "cross-national research",
+                                "synonyms": [
+                                    "multinational research",
+                                    "international research",
+                                    "transnational research"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "data mining",
+                                "synonyms": [
+                                    "information mining"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "systematic review"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "secondary data analysis"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "path coefficient"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "transcription",
+                                "synonyms": [
+                                    "transcript"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "photographs",
+                                "synonyms": [
+                                    "photography",
+                                    "photographic image"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "social interaction",
+                                "synonyms": [
+                                    "social actions"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "action science"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "yates' correction"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "logistic regression",
+                                "synonyms": [
+                                    "logistic model"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "chi-square test",
+                                "synonyms": [
+                                    "chi-square distribution",
+                                    "chi-squared distribution",
+                                    "chi-squared",
+                                    "chi-square"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "categorical data analysis"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "comparative research",
+                                "synonyms": [
+                                    "comparative study",
+                                    "comparative method",
+                                    "comparative methods",
+                                    "comparative studies"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "literature search"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "research synthesis"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "hierarchical linear models",
+                                "synonyms": [
+                                    "hierarchical linear modeling",
+                                    "hierarchical linear model",
+                                    "hierarchical linear modelling",
+                                    "hlm",
+                                    "hierarchical linear-modeling"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "hermeneutics",
+                                "synonyms": [
+                                    "hermeneutic contextualism",
+                                    "hermeneutic analysis"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "realism",
+                                "synonyms": [
+                                    "intransitive dimension",
+                                    "rational abstraction",
+                                    "realist",
+                                    "transitive dimension"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "discourse analysis",
+                                "synonyms": [
+                                    "topicalization",
+                                    "discourse studies"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "structuralism",
+                                "synonyms": [
+                                    "binary opposition"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "epistemology",
+                                "synonyms": [
+                                    "theory of knowledge"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "relativism"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "critical discourse analysis"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "innovative methods"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "critical realism",
+                                "synonyms": [
+                                    "emergent properties",
+                                    "relational model of society",
+                                    "transcendentalism"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "critical theory"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "applied research"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "educational research",
+                                "synonyms": [
+                                    "classroom research"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "ethnographic interviews"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "critical value"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "statistical tests"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "marketing research",
+                                "synonyms": [
+                                    "market research",
+                                    "consumer surveys"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "cohort analysis",
+                                "synonyms": [
+                                    "case-cohort design"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "cohort effects"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "longitudinal analysis",
+                                "synonyms": [
+                                    "repeated cross-sectional designs",
+                                    "total population designs",
+                                    "longitudinal comparative analysis",
+                                    "revolving panel designs"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "grounded theory"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "content analysis",
+                                "synonyms": [
+                                    "story grammars"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "feminism"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "artistic inquiry",
+                                "synonyms": [
+                                    "arts-based methods",
+                                    "creative methods",
+                                    "arts-based research",
+                                    "artistic enquiry"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "goodness-of-fit test",
+                                "synonyms": [
+                                    "goodness of fit tests",
+                                    "goodness of fit",
+                                    "goodness-of-fit"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "pilot studies",
+                                "synonyms": [
+                                    "scoping studies",
+                                    "pilot experiment",
+                                    "pilot test",
+                                    "exploratory study",
+                                    "scoping study"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "feasibility",
+                                "synonyms": [
+                                    "feasibility trial"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "interview schedules"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "semi-structured interviews"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "moderators"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "mean scores"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "classification",
+                                "synonyms": [
+                                    "categorization",
+                                    "categorisation"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "bayesian statistics",
+                                "synonyms": [
+                                    "bayesian inference",
+                                    "unobserved quantity",
+                                    "observed quantity"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "bayes' theorem"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "mobile methodologies",
+                                "synonyms": [
+                                    "mobile methods",
+                                    "mobile research"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "statistical power"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "fragmentation"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "diagnostics"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "participatory research"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "growth curve modelling",
+                                "synonyms": [
+                                    "growth curve modeling"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "latent variables"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "canonical correlation",
+                                "synonyms": [
+                                    "canonical analysis",
+                                    "linear composites"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "covariance",
+                                "synonyms": [
+                                    "wishart distribution",
+                                    "covariate"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "nested variables"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "census data"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "key concepts in research",
+                                "synonyms": [
+                                    "concepts and philosophies"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "prior probability"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "data management"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "social change"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "foucauldian discourse analysis"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "discursive psychology"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "bracketing"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "arima",
+                                "synonyms": [
+                                    "box-jenkins method",
+                                    "autoregressive integrated moving average",
+                                    "box-jenkins modeling"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "actor network theory"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "permutation"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "individual differences"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "phi coefficient"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "functionalism"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "creative interviewing"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "active interviews"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "cluster analysis",
+                                "synonyms": [
+                                    "cluster detection",
+                                    "cluster studies"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "databases"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "panel studies"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "prospective data"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "longitudinal research",
+                                "synonyms": [
+                                    "longitudinal"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "retrospective data"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "non-parametric statistics",
+                                "synonyms": [
+                                    "nonparametric statistics",
+                                    "nonparametric tests",
+                                    "nonparametric stats",
+                                    "power efficiency",
+                                    "non-parametric tests",
+                                    "non-parametric stats"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "covariance matrix"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "correlation"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "parametric statistics"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "association models"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "logit and probit models",
+                                "synonyms": [
+                                    "probit model",
+                                    "logit model"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "measures of association"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "odds ratio"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "memos",
+                                "synonyms": [
+                                    "theoretical memoing",
+                                    "memoing"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "constant comparison"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "purposive sampling",
+                                "synonyms": [
+                                    "purposeful sampling",
+                                    "judgement sample"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "theoretical sampling"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "postpositivism",
+                                "synonyms": [
+                                    "post-empiricism",
+                                    "post-positivism",
+                                    "postempiricism"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "research bias",
+                                "synonyms": [
+                                    "experimenter's bias",
+                                    "population error",
+                                    "measurement bias"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "generalizability",
+                                "synonyms": [
+                                    "generalization",
+                                    "generalisability",
+                                    "generalisation"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "causation",
+                                "synonyms": [
+                                    "causality",
+                                    "causal inference",
+                                    "causal model",
+                                    "causal effect"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "positivism",
+                                "synonyms": [
+                                    "unity of scientific method"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "p-value"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "t-test",
+                                "synonyms": [
+                                    "t test"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "cronbach's alpha",
+                                "synonyms": [
+                                    "cronbach's coefficient alpha"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "deduction",
+                                "synonyms": [
+                                    "deductive"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "effect size"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "research questions",
+                                "synonyms": [
+                                    "research aims"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "data collection",
+                                "synonyms": [
+                                    "data gathering",
+                                    "data generation"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "quantitative data collection",
+                                "synonyms": [
+                                    "quantitative methods",
+                                    "quantitative research"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "response rates"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "non-response",
+                                "synonyms": [
+                                    "nonresponse"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "behaviorism",
+                                "synonyms": [
+                                    "observable disposition",
+                                    "behavioralism",
+                                    "behaviourism",
+                                    "behaviouralism",
+                                    "operant conditioning"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "research proposals"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "grant application",
+                                "synonyms": [
+                                    "funding application"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "hermeneutic cycle",
+                                "synonyms": [
+                                    "hermeneutic circle"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "type i errors",
+                                "synonyms": [
+                                    "false alarm rate",
+                                    "false positive",
+                                    "type i error",
+                                    "alpha error"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "statistical inference",
+                                "synonyms": [
+                                    "inferential analysis"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "cramer's v",
+                                "synonyms": [
+                                    "cramer's phi"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "objectivity"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "objectivism"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "nodes"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "sociometry",
+                                "synonyms": [
+                                    "sociometric research",
+                                    "sociometric",
+                                    "sociometric method",
+                                    "peer nomination",
+                                    "peer ratings",
+                                    "sociometrics"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "social network research"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "social network analysis",
+                                "synonyms": [
+                                    "online community research",
+                                    "network analysis",
+                                    "online community analysis"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "intercoder reliability"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "fieldwork",
+                                "synonyms": [
+                                    "field studies",
+                                    "field research"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "field notes",
+                                "synonyms": [
+                                    "fieldnotes"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "ideologies"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "expected frequencies"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "observed frequencies"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "netnography"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "estimation methods"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "levene's test"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "homogeneity of variance"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "feminist research"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "queer theory"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "box-score method"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "descriptive statistics"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "univariate analysis"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "ratio scales"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "ordinal scales"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "interval scales"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "levels of measurement",
+                                "synonyms": [
+                                    "measurement scales",
+                                    "measurement scaling"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "nominal scales"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "phenomenology"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "intentionality",
+                                "synonyms": [
+                                    "theory of intentionality"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "meta-analysis",
+                                "synonyms": [
+                                    "meta analysis",
+                                    "metaanalysis"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "secondary research",
+                                "synonyms": [
+                                    "library research",
+                                    "desk research"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "writing research"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "induction",
+                                "synonyms": [
+                                    "inductive"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "hypothesis",
+                                "synonyms": [
+                                    "hypotheses"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "abduction",
+                                "synonyms": [
+                                    "category construction"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "emergent design"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "phenomenological analysis",
+                                "synonyms": [
+                                    "intentionality of consciousness"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "textual analysis",
+                                "synonyms": [
+                                    "text analysis"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "conversation analysis",
+                                "synonyms": [
+                                    "interaction analysis",
+                                    "spoken discourse analysis"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "interpretive phenomenological analysis",
+                                "synonyms": [
+                                    "ipa",
+                                    "interpretative phenomenological analysis"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "kolmogorov-smirnov test"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "program evaluation"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "evaluation design"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "visual ethnography"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "archival research",
+                                "synonyms": [
+                                    "archive"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "cognitive interviews",
+                                "synonyms": [
+                                    "cognitive interviewing",
+                                    "question testing"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "questionnaire design"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "pre-test interviews",
+                                "synonyms": [
+                                    "pretest interviews",
+                                    "preparatory interview"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "mixed effects model"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "spearman's rank order correlation",
+                                "synonyms": [
+                                    "spearman rank correlaction coefficient",
+                                    "spearman's correlation coefficient",
+                                    "spearman's rank correlation coefficient",
+                                    "spearmans rank order correlation"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "face validity"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "autobiography"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "interpretive repertoires"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "communicating and disseminating research"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "fuzzy set",
+                                "synonyms": [
+                                    "fuzzy sets",
+                                    "fuzzy set theory"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "correspondence analysis"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "qualitative comparative analysis",
+                                "synonyms": [
+                                    "qualitative comparative analysis (qca)",
+                                    "qca"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "qualitative measures"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "dispersion",
+                                "synonyms": [
+                                    "statistical variability"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "panel data"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "fixed effects model"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "critical reading, writing and thinking"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "empiricism"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "planning research"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "unit non-response",
+                                "synonyms": [
+                                    "unit nonresponse"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "item non-response",
+                                "synonyms": [
+                                    "item nonresponse"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "statistical control"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "representative samples",
+                                "synonyms": [
+                                    "representativeness"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "personal narratives"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "field relations"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "ethnographic writing"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "internal reliability"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "convergent validity"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "boolean logic"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "random effects model"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "documentary analysis",
+                                "synonyms": [
+                                    "document analysis"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "research funding",
+                                "synonyms": [
+                                    "research grant",
+                                    "research grants"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "bivariate regression",
+                                "synonyms": [
+                                    "bivariate analysis"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "spss",
+                                "synonyms": [
+                                    "ibm spss statistics"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "stata"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "syntax"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "rasch models"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "semiotics"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "research ethics"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "integrity"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "confidentiality"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "data archives"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "media analysis"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "cross-cultural research"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "pragmatism",
+                                "synonyms": [
+                                    "american pragmatism",
+                                    "american pragmatist"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "time-series design"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "organizational research"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "observation schedules"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "population mean"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "feminist epistemology"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "nonprobability sampling",
+                                "synonyms": [
+                                    "non-probability sampling"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "demography"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "constructivism"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "biographical research",
+                                "synonyms": [
+                                    "biography",
+                                    "biographical methods",
+                                    "biographical"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "kurtosis"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "ecological validity"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "biographical interpretive method",
+                                "synonyms": [
+                                    "biographical interpretative methodology",
+                                    "biographical interpretative method (bim)",
+                                    "biographical interpretative method",
+                                    "bim"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "fuzzy logic"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "triangulation"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "spatial analysis"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "geographic information systems",
+                                "synonyms": [
+                                    "gisci",
+                                    "gis"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "monte carlo methods",
+                                "synonyms": [
+                                    "monte carlo simulation"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "mindfulness"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "f-tests"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "semantic differentials"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "attitude scales"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "summated scales",
+                                "synonyms": [
+                                    "likert scales",
+                                    "summated rating scales"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "nash equilibrium"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "methodology"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "graphs"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "contextual effects"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "small area estimation"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "diffuse comparisons"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "general linear models",
+                                "synonyms": [
+                                    "generalised linear models",
+                                    "generalized linear models",
+                                    "glm",
+                                    "general linear modelling"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "ethical codes",
+                                "synonyms": [
+                                    "ethical constraints",
+                                    "code of ethics"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "ethical approval",
+                                "synonyms": [
+                                    "ethics boards"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "continuous variables"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "degrees of freedom"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "probability sampling",
+                                "synonyms": [
+                                    "probabilistic sampling"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "random sampling"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "simulation",
+                                "synonyms": [
+                                    "computational modelling",
+                                    "computational simulation"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "proxy variables"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "intersubjectivity"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "reasoning"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "big data"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "histograms"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "stem-and-leaf"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "bar charts"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "box-and-whisker",
+                                "synonyms": [
+                                    "box and whisker",
+                                    "box-and-whisker-diagram",
+                                    "box plot",
+                                    "box and whisker plot",
+                                    "boxplot"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "pie charts"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "scatterplots",
+                                "synonyms": [
+                                    "scatter graph",
+                                    "scatter plot",
+                                    "scatter diagram"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "research with children"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "sampling error",
+                                "synonyms": [
+                                    "estimation error"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "central tendency"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "multiple realities"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "atlas.ti"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "nvivo"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "underlying distribution"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "epidemiology"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "control variables"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "policy research",
+                                "synonyms": [
+                                    "policymaking",
+                                    "policy making",
+                                    "policy-making"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "public opinion research"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "survival analysis"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "event history analysis",
+                                "synonyms": [
+                                    "event history data"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "hazard rates"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "impression management"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "environmental stimuli"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "documentary research",
+                                "synonyms": [
+                                    "documentary methods"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "social desirability bias"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "computer-assisted qualitative data analysis",
+                                "synonyms": [
+                                    "qualitative software",
+                                    "caqdas",
+                                    "computer-assisted data analysis"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "one-way analysis of variance",
+                                "synonyms": [
+                                    "one-way anova"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "two-way analysis of variance",
+                                "synonyms": [
+                                    "two way anova",
+                                    "two-way anova",
+                                    "two way analysis of variance"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "social media research"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "turn-taking",
+                                "synonyms": [
+                                    "adjacency pairs"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "matrix representation"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "diary methods",
+                                "synonyms": [
+                                    "diaries"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "protocols"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "presenting research"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "type ii errors",
+                                "synonyms": [
+                                    "ß error",
+                                    "beta error",
+                                    "miss rate",
+                                    "false negative"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "data synthesis"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "youth-led research",
+                                "synonyms": [
+                                    "child-led research"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "collaborative research",
+                                "synonyms": [
+                                    "collaborative methodologies"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "denotation"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "resampling"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "maxqda"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "agglomerative methods"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "translation"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "gender difference",
+                                "synonyms": [
+                                    "gender inequality",
+                                    "gender equality"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "population variance"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "in-depth interviews",
+                                "synonyms": [
+                                    "depth interviews"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "delphi method",
+                                "synonyms": [
+                                    "normative delphi",
+                                    "delphi technique"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "critical hermeneutics"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "vulnerable groups"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "empirical data",
+                                "synonyms": [
+                                    "primary data"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "policy evaluation",
+                                "synonyms": [
+                                    "policy analysis"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "quality criteria"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "manifest variables"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "cross-case analysis"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "scepticism"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "likelihood functions"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "fisher's exact test"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "single cases",
+                                "synonyms": [
+                                    "n=1"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "subjectivity",
+                                "synonyms": [
+                                    "subjectivism",
+                                    "subjectivist"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "social reality"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "large-scale research"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "teaching research methods"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "matched pairs"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "falsification",
+                                "synonyms": [
+                                    "falsificationism"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "positioning theory"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "official statistics"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "principal components analysis"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "categorical variables"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "attrition"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "units of analysis"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "double hermeneutic"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "tape-recording",
+                                "synonyms": [
+                                    "field recording",
+                                    "field recordings"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "interviewer effects"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "unfolding method"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "sample bias",
+                                "synonyms": [
+                                    "ascertainment bias",
+                                    "sample selection bias"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "indexicality"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "cross-tabulation",
+                                "synonyms": [
+                                    "crosstab",
+                                    "crosstabulation",
+                                    "cross tabulation",
+                                    "cross tab"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "contingency tables"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "second-order factors"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "q methodology"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "computational modeling"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "interval variables"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "ratio variables"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "consensus"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "personal experience"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "collage inquiry"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "latent trait analysis",
+                                "synonyms": [
+                                    "latent trait",
+                                    "latent trait model"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "metric variables",
+                                "synonyms": [
+                                    "metric-level variables"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "elite interviews"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "dichotomous variables"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "audience ethnography"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "communality"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "theoretical saturation"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "dissimilarity measures"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "meta-synthesis",
+                                "synonyms": [
+                                    "metasynthesis",
+                                    "meta synthesis"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "thematic analysis"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "internal validity"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "poisson regression"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "poetic inquiry",
+                                "synonyms": [
+                                    "poetics"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "random allocation",
+                                "synonyms": [
+                                    "randomisation",
+                                    "randomly selected"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "cluster sampling"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "introspection"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "ordinal variables",
+                                "synonyms": [
+                                    "ordinal-level variables"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "prediction"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "conditional probability"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "cooperative inquiry",
+                                "synonyms": [
+                                    "collaborative inquiry"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "mann-whitney u test"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "emancipatory research",
+                                "synonyms": [
+                                    "emancipation"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "safe fieldwork"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "r statistical package"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "factorial design"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "randomized controlled trials",
+                                "synonyms": [
+                                    "randomised control trials",
+                                    "rcts",
+                                    "random control trials",
+                                    "randomised control studies",
+                                    "random controlled trials",
+                                    "randomizing groups",
+                                    "randomized control studies"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "replication"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "automated text analysis",
+                                "synonyms": [
+                                    "knowledge discovery from text"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "probability distribution"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "combining data"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "central limit theorem"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "polling",
+                                "synonyms": [
+                                    "opinion polls",
+                                    "opinion poll"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "pareto chart"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "practitioner research",
+                                "synonyms": [
+                                    "practice-based research"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "range"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "student's t-distribution"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "item response theory",
+                                "synonyms": [
+                                    "irt"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "nominal variables",
+                                "synonyms": [
+                                    "nominal-level variables"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "least squares criterion",
+                                "synonyms": [
+                                    "least-square criterion",
+                                    "least square criterion"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "path diagram"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "aptitude tests"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "kruskal-wallis test"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "personality inventories"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "paired t-test"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "sensitising concepts"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "wilcoxon test"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "frankfurt school"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "publishing your research"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "agent-based simulation",
+                                "synonyms": [
+                                    "agent-based modeling",
+                                    "agent-based modelling"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "research impact",
+                                "synonyms": [
+                                    "impactful research"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "cross-sectional design"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "historiography"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "inscription"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "rhetoric",
+                                "synonyms": [
+                                    "rhetorical"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "cohort studies",
+                                "synonyms": [
+                                    "cohort-sequential design",
+                                    "cohort sequential design"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "natural logarithm"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "achievement tests",
+                                "synonyms": [
+                                    "achievement testing"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "latent class analysis",
+                                "synonyms": [
+                                    "latent class"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "econometrics"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "theory testing"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "philosophy of research"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "semiparametric models"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "endogenous variables"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "multiple methods"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "exogenous variables"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "telephone surveys"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "verstehen"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "homogeneity of regression"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "critical resistance analysis",
+                                "synonyms": [
+                                    "cra"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "data visualization"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "kaiser-meyer-olkin test",
+                                "synonyms": [
+                                    "kmo",
+                                    "kaiser meyer olkin"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "bartlett's test"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "fluctuations"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "photovoice"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "transferability"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "mediation"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "axial coding"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "moderation"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "regulation"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "realist synthesis"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "cook's distance",
+                                "synonyms": [
+                                    "cook's d"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "post-hoc analysis"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "forecasting"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "data sharing"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "research report"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "insider action research"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "stakeholders"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "design-based research"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "split-half reliability",
+                                "synonyms": [
+                                    "parallel forms reliability",
+                                    "internal consistency reliability"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "robust regression"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "negative cases"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "process evaluation"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "credibility"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "gatekeepers"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "thesis",
+                                "synonyms": [
+                                    "thesis publication",
+                                    "published thesis",
+                                    "dissertation thesis",
+                                    "thesis viva",
+                                    "writing thesis",
+                                    "publish thesis"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "access"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "journal articles"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "recruiting participants"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "investigator bias",
+                                "synonyms": [
+                                    "investigator effects",
+                                    "interviewer bias"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "total survey error"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "question formation"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "concept mapping"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "truth claims"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "sequential design"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "random variables"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "interquartile range"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "kendall's rank correlation",
+                                "synonyms": [
+                                    "kendall's tau coefficient",
+                                    "tau test",
+                                    "kendall's tau",
+                                    "kendall's t"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "semi-interquartile range"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "pearson's correlation coefficient",
+                                "synonyms": [
+                                    "pearson product-moment correlation coefficient",
+                                    "pearson correlations"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "z-score",
+                                "synonyms": [
+                                    "z-value",
+                                    "standard score"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "expert interviews"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "coefficient of variation"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "coding scheme"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "chebyshev's theorem"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "statistical modelling",
+                                "synonyms": [
+                                    "statistical models"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "transformative paradigm"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "multiple-choice questions"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "propensity scores"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "algorithms",
+                                "synonyms": [
+                                    "computer algorithm",
+                                    "algorithmic"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "propensity score matching"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "data reconstruction"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "auditing",
+                                "synonyms": [
+                                    "audit (academic)",
+                                    "audit"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "visual representations"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "logical empiricism",
+                                "synonyms": [
+                                    "neo-positivism"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "wilks' lambda"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "partial correlation"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "thurstone scales"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "funnel plots"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "simultaneous equations"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "nuisance variables"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "crisis of representation"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "anonymity"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "computer-assisted telephone interviews",
+                                "synonyms": [
+                                    "cati",
+                                    "computer-assisted telephone interviewing"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "parametric models"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "graph theory"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "interaction order"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "cochrane collaboration",
+                                "synonyms": [
+                                    "collaboration cochrane"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "survey weighting",
+                                "synonyms": [
+                                    "weighting data"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "external validity"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "sensitive topics"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "snowball sampling"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "f-ratios"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "frequency distribution"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "lorenz curve"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "verification"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "spurious correlation"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "dissertation"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "eigenvalues"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "contemplative inquiry"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "materialism"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "evidence-based practice"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "cointegration"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "paradigms"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "cross-sectional surveys",
+                                "synonyms": [
+                                    "cross-sectional questionnaire"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "collective behavior",
+                                "synonyms": [
+                                    "collective behaviour"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "social structures",
+                                "synonyms": [
+                                    "social order"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "process theory"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "similarity measures"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "scientific method"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "structural analysis"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "naturally occurring data",
+                                "synonyms": [
+                                    "naturalistic data"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "reexpression"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "parameter estimation"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "projective techniques",
+                                "synonyms": [
+                                    "projective technique"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "construct validity"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "declaration of helsinki"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "historicism"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "data linkage",
+                                "synonyms": [
+                                    "linked data"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "thick description"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "representation of reality"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "covariance structure models"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "cochran's q test",
+                                "synonyms": [
+                                    "cochran q test",
+                                    "cochran q-test"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "external reliability"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "computer-assisted personal interviews",
+                                "synonyms": [
+                                    "computer-assisted personal interviewing",
+                                    "capi"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "vignettes"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "markov chain",
+                                "synonyms": [
+                                    "markov chain methods",
+                                    "markov chain ,models"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "best linear unbiased estimator",
+                                "synonyms": [
+                                    "blup",
+                                    "best linear unbiased prediction"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "hawthorne effect"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "outliers"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "open coding"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "hypothetico-deductivist methods",
+                                "synonyms": [
+                                    "hypothetico-deductive"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "non-linearity",
+                                "synonyms": [
+                                    "nonlinearity"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "deconstruction"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "complexity theory"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "repeated measures design"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "idealism",
+                                "synonyms": [
+                                    "idealist"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "word frequency counts"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "random factors"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "social constructionism"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "cultural relativism"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "interview guides"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "relational data"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "data collection skills"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "data analysis skills"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "study skills"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "researcher skills"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "professional skills"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "student success"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "career development"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "practical skills",
+                                "synonyms": [
+                                    "practitioner skills"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "professional communication"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "doing research"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "researcher development"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "factor scales"
+                            }
+                        }
+                    ]
                 }
             ]
-        }
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "SageDefineIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "Term",
+                            "type": "TERM_NAME",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.385762631083.1087317659986"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "SageDecomposeIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "Term",
+                            "type": "TERM_NAME",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.564176437014.229421601199"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "SageRelatedIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "Term",
+                            "type": "TERM_NAME",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1054179962805.968105036297"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "prompts": [
+            {
+                "id": "Elicit.Slot.385762631083.1087317659986",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Which research method are you interested in?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "What method would you like me to define for you?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "What would you like me to define?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.564176437014.229421601199",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Please say the method you want to decompose."
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Which research method are you trying to break down?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Which method do you want to decompose?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1054179962805.968105036297",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Which research method do you want to find relatives for?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Please say the name of a research method, so I can find related terms."
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Which method do you want to find relationships for?"
+                    }
+                ]
+            }
+        ]
     }
 }
